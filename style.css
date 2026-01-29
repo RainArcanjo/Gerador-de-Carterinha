@@ -25,7 +25,7 @@ body {
     width: 375px; /* Largura Mobile */
     height: auto; /* Altura automática para ajustar ao conteúdo */
     min-height: 600px;
-    background-color: #9EDCC5; /* Verde Menta Oficial */
+    background-color: #D9D8ED; /* Roxo novo Menta Oficial */
     padding: 20px 25px 40px 25px; /* Padding extra embaixo para o botão */
     display: flex;
     flex-direction: column;
@@ -75,8 +75,11 @@ body {
 
 /* Logo DNE */
 .logo-dne-img {
-    height: 40px; /* Ajuste fino de altura */
+    height: 80px; /* Ajuste fino de altura */
     object-fit: contain;
+    position: relative;
+    top: 16px;
+    left: -20px;
 }
 
 /* Logo FESN (Montagem) */
@@ -87,6 +90,7 @@ body {
     justify-content: center;
     height: 50px;
     width: 100px;
+    top: 20px;
 }
 
 .fesn-text {
@@ -111,8 +115,13 @@ body {
     opacity: 0.9;
 }
 
-.gradYear2026 {
-    margin-left: 8px; 
+.year-2026 {
+    display: flex;
+    align-items: center;
+}
+
+.year-2026-img {
+    height: 60px;
 }
 
 
@@ -151,8 +160,8 @@ body {
     box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 .qr-frame img {
-    width: 100%;
-    height: 100%;
+    width: 85%;
+    height: 85%;
     object-fit: contain;
 }
 
@@ -208,8 +217,8 @@ body {
     margin-bottom: 2px;
 }
 .usage-code-val {
-    font-size: 14px;
-    font-weight: 900;
+    font-size: 10px;
+    font-weight: 400;
     color: #333;
 }
 
