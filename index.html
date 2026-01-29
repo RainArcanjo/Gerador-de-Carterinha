@@ -12,11 +12,18 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- html2canvas + jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 
     <div id="card-wrapper">
+         
+        <div class="capture-marker" id="marker-top-left"></div>
+            <div class="capture-marker" id="marker-top-right"></div>
+            <div class="capture-marker" id="marker-bottom-left"></div>
+        <div class="capture-marker" id="marker-bottom-right"></div>
         
         <div class="header-bar">
             <span class="material-icons back-arrow">&#xe5c4;</span>
@@ -24,7 +31,7 @@
         </div>
 
         <div class="logos-header">
-            <img src="img/dne.png" class="logo-dne-img" alt="DNE">
+            <img src="img/dne.png" class="logo-dne-img" alt="DNE" crossorigin="anonymous">
             
             <div class="logo-fesn-wrapper">
                 <img src="https://i.ibb.co/cKNc7yT6/Icon-Fesn-192.png" class="fesn-icon-bg" alt="" crossorigin="anonymous">
@@ -34,10 +41,10 @@
 
         <div class="media-section">
             <div class="photo-frame">
-                <img id="img-photo" src="img/placeholder.jpg" alt="Foto">
+                <img id="img-photo" src="img/placeholder.jpg" alt="Foto" crossorigin="anonymous">
             </div>
             <div class="qr-frame">
-                <img id="img-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rainarcanjo.github.io/Gerador-de-Carterinha/loading.html" alt="QR Code" crossorigin="anonymous" loading="eager">
+                <img id="img-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://rainarcanjo.github.io/Gerador-de-Carterinha/loading.html" alt="QR Code" crossorigin="anonymous">
             </div>
         </div>
 
@@ -73,16 +80,7 @@
                     <div class="usage-code-label">CÓD. USO</div>
                     <div class="usage-code-val" id="d-cod">TH30ZVG</div>
                 </div>
-                <svg
-  width="64"
-  height="26"
-  viewBox="0 0 64 26"
-  xmlns="http://www.w3.org/2000/svg">
- 
-
-    <img src="img/2026.webp" alt="2026" class="year-2026-img">
-
-
+                <img src="img/2026.webp" alt="2026" class="year-2026-img" crossorigin="anonymous">
             </div>
         </div>
 
@@ -99,63 +97,63 @@
     </div>
 
     <div class="editor-container">
-    <h3>Editar Dados</h3>
-    
-    <div class="form-group">
-        <input type="file" id="file-photo" hidden accept="image/*">
-        <button class="btn btn-upload" onclick="document.getElementById('file-photo').click()">
-            📸 Carregar Foto
+        <h3>Editar Dados</h3>
+        
+        <div class="form-group">
+            <input type="file" id="file-photo" hidden accept="image/*">
+            <button class="btn btn-upload" onclick="document.getElementById('file-photo').click()">
+                📸 Carregar Foto
+            </button>
+        </div>
+
+        <div class="form-group">
+            <label>Nome Completo</label>
+            <input type="text" value="MICHAEL GARY SCOTT" oninput="update('d-name', this.value)">
+        </div>
+
+        <div class="form-group">
+            <label>Instituição</label>
+            <input type="text" value="ENAP" oninput="update('d-inst', this.value)">
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Curso</label>
+                <input type="text" value="GESTÃO DE PESSOAS" oninput="update('d-curso', this.value)">
+            </div>
+            <div class="form-group">
+                <label>Tipo</label>
+                <input type="text" value="ED PROFISSIONAL" oninput="update('d-tipo', this.value)">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>CPF</label>
+                <input type="text" value="64094544062" oninput="update('d-cpf', this.value)">
+            </div>
+            <div class="form-group">
+                <label>Nascimento</label>
+                <input type="text" value="15/03/1965" oninput="update('d-nasc', this.value)">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Validade</label>
+                <input type="text" value="31/03/2026" oninput="update('d-val', this.value)">
+            </div>
+            <div class="form-group">
+                <label>Código de Uso</label>
+                <input type="text" value="TH30ZVG" oninput="update('d-cod', this.value)">
+            </div>
+        </div>
+
+        <button class="btn" onclick="downloadPDF()" id="btn-download">
+            🖨️ Baixar PDF
         </button>
     </div>
 
-    <div class="form-group">
-        <label>Nome Completo</label>
-        <input type="text" value="MICHAEL GARY SCOTT" oninput="update('d-name', this.value)">
-    </div>
-
-    <div class="form-group">
-        <label>Instituição</label>
-        <input type="text" value="ENAP" oninput="update('d-inst', this.value)">
-    </div>
-
-    <div class="form-row">
-        <div class="form-group">
-            <label>Curso</label>
-            <input type="text" value="GESTÃO DE PESSOAS" oninput="update('d-curso', this.value)">
-        </div>
-        <div class="form-group">
-            <label>Tipo</label>
-            <input type="text" value="ED PROFISSIONAL" oninput="update('d-tipo', this.value)">
-        </div>
-    </div>
-
-    <div class="form-row">
-        <div class="form-group">
-            <label>CPF</label>
-            <input type="text" value="64094544062" oninput="update('d-cpf', this.value)">
-        </div>
-        <div class="form-group">
-            <label>Nascimento</label>
-            <input type="text" value="15/03/1965" oninput="update('d-nasc', this.value)">
-        </div>
-    </div>
-
-    <div class="form-row">
-        <div class="form-group">
-            <label>Validade</label>
-            <input type="text" value="31/03/2026" oninput="update('d-val', this.value)">
-        </div>
-        <div class="form-group">
-            <label>Código de Uso</label>
-            <input type="text" value="TH30ZVG" oninput="update('d-cod', this.value)">
-        </div>
-    </div>
-
-    <button class="btn" onclick="downloadPDF()">🖨️ Baixar PDF (Automático)</button>
-</div>
-
-
     <script src="script.js"></script>
 </body>
-
 </html>

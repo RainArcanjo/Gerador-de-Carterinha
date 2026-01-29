@@ -1,5 +1,9 @@
 /* --- GERAL --- */
-* { box-sizing: border-box; }
+* { 
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+}
 
 body {
     background-color: #f0f2f5;
@@ -10,6 +14,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    min-height: 100vh;
 }
 
 @media (min-width: 900px) {
@@ -20,13 +25,13 @@ body {
     }
 }
 
-/* --- CONTAINER DO CARTÃO --- */
+/* --- CONTAINER DO CARTÃO (100% da largura em mobile) --- */
 #card-wrapper {
-    width: 375px; /* Largura Mobile */
-    height: auto; /* Altura automática para ajustar ao conteúdo */
-    min-height: 600px;
-    background-color: #D9D8ED; /* Roxo novo Menta Oficial */
-    padding: 20px 25px 40px 25px; /* Padding extra embaixo para o botão */
+    width: 100%;
+    max-width: 500px; /* Limite máximo em telas grandes */
+    height: auto;
+    background-color: #D9D8ED;
+    padding: 5.3vw 6.7vw 10.7vw 6.7vw; /* Padding proporcional (20px/375px = 5.3%, etc) */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,31 +41,44 @@ body {
     print-color-adjust: exact;
 }
 
+/* Em desktop, fixa em 375px */
+@media (min-width: 900px) {
+    #card-wrapper {
+        width: 375px;
+        padding: 20px 25px 40px 25px;
+    }
+}
+
 /* --- HEADER (Seta + Título) --- */
 .header-bar {
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
-    padding-left: 5px;
+    gap: 4vw; /* 15px/375px = 4% */
+    margin-bottom: 6.7vw; /* 25px/375px */
+    padding-left: 1.3vw;
 }
 
 .back-arrow {
-    font-size: 24px;
+    font-size: 6.4vw; /* 24px/375px */
     color: #1a1a1a;
     opacity: 0.7;
     cursor: pointer;
 }
 
 .header-title {
-    font-size: 13px;
+    font-size: 3.5vw; /* 13px/375px */
     font-weight: 700;
     color: #1a1a1a;
     text-transform: uppercase;
     opacity: 0.9;
-    letter-spacing: 0.3px;
-    margin: 0; 
+    letter-spacing: 0.08vw;
+}
+
+@media (min-width: 900px) {
+    .header-bar { gap: 15px; margin-bottom: 25px; padding-left: 5px; }
+    .back-arrow { font-size: 24px; }
+    .header-title { font-size: 13px; letter-spacing: 0.3px; }
 }
 
 /* --- LOGOS --- */
@@ -69,75 +87,71 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-bottom: 30px;
-    padding: 0 5px;
+    margin-bottom: 8vw; /* 30px/375px */
+    padding: 0 1.3vw;
 }
 
-/* Logo DNE */
 .logo-dne-img {
-    height: 80px; /* Ajuste fino de altura */
+    height: 21.3vw; /* 80px/375px */
     object-fit: contain;
     position: relative;
-    top: 16px;
-    left: -20px;
+    top: 4.3vw;
+    left: -5.3vw;
 }
 
-/* Logo FESN (Montagem) */
 .logo-fesn-wrapper {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50px;
-    width: 100px;
-    top: 20px;
+    height: 13.3vw; /* 50px/375px */
+    width: 26.7vw; /* 100px/375px */
+    top: 5.3vw;
 }
 
 .fesn-text {
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
     font-style: italic;
-    letter-spacing: 2px;
-    font-size: 32px;
+    letter-spacing: 0.5vw;
+    font-size: 8.5vw; /* 32px/375px */
     color: #343474;
-    z-index: 2; /* Texto na frente */
+    z-index: 2;
     position: relative;
 }
 
 .fesn-icon-bg {
     position: absolute;
-    left: -16px;
+    left: -4.3vw;
     top: 50%;
     transform: translateY(-50%);
-    width: 85px;
-    height: 85px;
-    z-index: 1; /* Sol atrás */
+    width: 22.7vw; /* 85px/375px */
+    height: 22.7vw;
+    z-index: 1;
     opacity: 0.9;
 }
 
-.year-2026 {
-    display: flex;
-    align-items: center;
+@media (min-width: 900px) {
+    .logos-header { margin-bottom: 30px; padding: 0 5px; }
+    .logo-dne-img { height: 80px; top: 16px; left: -20px; }
+    .logo-fesn-wrapper { height: 50px; width: 100px; top: 20px; }
+    .fesn-text { letter-spacing: 2px; font-size: 32px; }
+    .fesn-icon-bg { left: -16px; width: 85px; height: 85px; }
 }
-
-.year-2026-img {
-    height: 60px;
-}
-
 
 /* --- MÍDIA (Foto + QR) --- */
 .media-section {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 25px;
-    gap: 15px;
+    margin-bottom: 6.7vw; /* 25px/375px */
+    gap: 4vw;
 }
 
 .photo-frame {
-    width: 125px;
-    height: 155px;
-    border-radius: 12px;
+    width: 33.3vw; /* 125px/375px */
+    height: 41.3vw; /* 155px/375px */
+    border-radius: 3.2vw;
     background-color: #ccc;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -149,14 +163,14 @@ body {
 }
 
 .qr-frame {
-    width: 155px;
-    height: 155px;
-    border-radius: 12px;
+    width: 41.3vw; /* 155px/375px */
+    height: 41.3vw;
+    border-radius: 3.2vw;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px;
+    padding: 3.2vw;
     box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 .qr-frame img {
@@ -165,38 +179,44 @@ body {
     object-fit: contain;
 }
 
+@media (min-width: 900px) {
+    .media-section { margin-bottom: 25px; gap: 15px; }
+    .photo-frame { width: 125px; height: 155px; border-radius: 12px; }
+    .qr-frame { width: 155px; height: 155px; border-radius: 12px; padding: 12px; }
+}
+
 /* --- CARTÃO BRANCO DE DADOS --- */
 .info-card {
     background-color: white;
     width: 100%;
-    border-radius: 12px;
-    padding: 20px;
+    border-radius: 3.2vw;
+    padding: 5.3vw; /* 20px/375px */
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 5.3vw;
 }
 
 .student-name {
-    font-size: 14px;
+    font-size: 3.7vw; /* 14px/375px */
     font-weight: 900;
     color: #000;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 3.2vw;
 }
 
 .data-lines {
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    margin-bottom: 10px;
+    gap: 0.5vw;
+    margin-bottom: 2.7vw;
 }
 
 .data-line {
-    font-size: 10px;
+    font-size: 2.7vw; /* 10px/375px */
     color: #444;
     line-height: 1.6;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.05vw;
 }
 .label { 
     font-weight: 700;
@@ -205,83 +225,108 @@ body {
 .value { text-transform: uppercase; }
 
 .card-bottom {
-    margin-top: 15px;
+    margin-top: 4vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .usage-code-label {
-    font-size: 10px;
+    font-size: 2.7vw;
     color: #666;
-    margin-bottom: 2px;
+    margin-bottom: 0.5vw;
 }
 .usage-code-val {
-    font-size: 10px;
+    font-size: 2.7vw;
     font-weight: 400;
     color: #333;
 }
 
-.year-big {
-    font-size: 26px;
-    font-weight: 800;
-    color: #2F80ED;
-    line-height: 1;
-    letter-spacing: -0.5px;
-    opacity: 0.85;
+.year-2026-img {
+    height: 16vw; /* 60px/375px */
+}
+
+@media (min-width: 900px) {
+    .info-card { border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+    .student-name { font-size: 14px; margin-bottom: 12px; }
+    .data-lines { gap: 2px; margin-bottom: 10px; }
+    .data-line { font-size: 10px; letter-spacing: 0.2px; }
+    .card-bottom { margin-top: 15px; }
+    .usage-code-label { font-size: 10px; margin-bottom: 2px; }
+    .usage-code-val { font-size: 10px; }
+    .year-2026-img { height: 60px; }
 }
 
 /* --- RODAPÉ --- */
 .validation-area {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 4vw;
 }
 .val-title {
-    font-size: 11px;
+    font-size: 2.9vw; /* 11px/375px */
     color: #333;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.13vw;
 }
 .val-link {
     display: block;
-    margin-top: 4px;
-    font-size: 10px;
+    margin-top: 1vw;
+    font-size: 2.7vw;
     color: #333;
     opacity: 0.7;
+}
+
+@media (min-width: 900px) {
+    .validation-area { margin-bottom: 15px; }
+    .val-title { font-size: 11px; letter-spacing: 0.5px; }
+    .val-link { margin-top: 4px; font-size: 10px; }
 }
 
 /* --- BOTÃO CERTIFICADO --- */
 .cert-chip {
     background-color: white;
-    border-radius: 50px;
-    padding: 6px 20px;
+    border-radius: 13.3vw;
+    padding: 1.6vw 5.3vw;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 2.1vw;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    margin-top: 10px;
+    margin-top: 2.7vw;
 }
 
 .icon-check {
-    font-size: 18px;
+    font-size: 4.8vw;
     color: #66BB6A;
 }
 
 .cert-text {
-    font-size: 13px;
+    font-size: 3.5vw;
     color: #333;
     font-weight: 500;
+}
+
+@media (min-width: 900px) {
+    .cert-chip { border-radius: 50px; padding: 6px 20px; gap: 8px; margin-top: 10px; }
+    .icon-check { font-size: 18px; }
+    .cert-text { font-size: 13px; }
 }
 
 /* --- PAINEL DE EDIÇÃO --- */
 .editor-container {
     width: 100%;
-    max-width: 375px;
+    max-width: 500px;
     background: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
+
+@media (min-width: 900px) {
+    .editor-container {
+        max-width: 375px;
+    }
+}
+
 .form-row { display: flex; gap: 10px; margin-bottom: 10px; }
 .form-group { width: 100%; margin-bottom: 10px; }
 .form-group label { display: block; font-size: 11px; font-weight: bold; color: #555; margin-bottom: 4px; }
@@ -289,3 +334,107 @@ body {
 .btn { width: 100%; padding: 12px; background-color: #2E7D32; color: white; border: none; border-radius: 6px; font-weight: bold; font-size: 14px; cursor: pointer; margin-top: 10px; }
 .btn:hover { background-color: #1B5E20; }
 .btn-upload { background-color: #eee; color: #333; border: 1px solid #ccc; }
+
+/* --- IMPRESSÃO --- */
+@media print {
+    /* Esconde tudo exceto o cartão */
+    body * {
+        visibility: hidden;
+    }
+    
+    #card-wrapper,
+    #card-wrapper * {
+        visibility: visible;
+    }
+    
+    /* Remove background e padding do body */
+    body {
+        background: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Cartão ocupa 100% da página */
+    #card-wrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100vw !important;
+        max-width: none !important;
+        height: auto !important;
+        margin: 0;
+        padding: 5.3vw 6.7vw 10.7vw 6.7vw;
+        overflow: visible;
+        box-shadow: none;
+    }
+    
+    /* Página se ajusta ao conteúdo */
+    @page {
+        size: auto;
+        margin: 0;
+    }
+    
+    /* Esconde botões e seta */
+    .editor-container,
+    .back-arrow,
+    button {
+        display: none !important;
+    }
+    
+    /* --- MARCADORES INVISÍVEIS PARA CAPTURA --- */
+.capture-marker {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background-color: transparent;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+#marker-top-left {
+    top: 0;
+    left: 0;
+}
+
+#marker-top-right {
+    top: 0;
+    right: 0;
+}
+
+#marker-bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+#marker-bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+    /* Mantém todas as proporções em vw */
+    .header-bar { gap: 4vw; margin-bottom: 6.7vw; padding-left: 1.3vw; }
+    .back-arrow { font-size: 6.4vw; }
+    .header-title { font-size: 3.5vw; letter-spacing: 0.08vw; }
+    .logos-header { margin-bottom: 8vw; padding: 0 1.3vw; }
+    .logo-dne-img { height: 21.3vw; top: 4.3vw; left: -5.3vw; }
+    .logo-fesn-wrapper { height: 13.3vw; width: 26.7vw; top: 5.3vw; }
+    .fesn-text { letter-spacing: 0.5vw; font-size: 8.5vw; }
+    .fesn-icon-bg { left: -4.3vw; width: 22.7vw; height: 22.7vw; }
+    .media-section { margin-bottom: 6.7vw; gap: 4vw; }
+    .photo-frame { width: 33.3vw; height: 41.3vw; border-radius: 3.2vw; }
+    .qr-frame { width: 41.3vw; height: 41.3vw; border-radius: 3.2vw; padding: 3.2vw; }
+    .info-card { border-radius: 3.2vw; padding: 5.3vw; margin-bottom: 5.3vw; }
+    .student-name { font-size: 3.7vw; margin-bottom: 3.2vw; }
+    .data-lines { gap: 0.5vw; margin-bottom: 2.7vw; }
+    .data-line { font-size: 2.7vw; letter-spacing: 0.05vw; }
+    .card-bottom { margin-top: 4vw; }
+    .usage-code-label { font-size: 2.7vw; margin-bottom: 0.5vw; }
+    .usage-code-val { font-size: 2.7vw; }
+    .year-2026-img { height: 16vw; }
+    .validation-area { margin-bottom: 4vw; }
+    .val-title { font-size: 2.9vw; letter-spacing: 0.13vw; }
+    .val-link { margin-top: 1vw; font-size: 2.7vw; }
+    .cert-chip { border-radius: 13.3vw; padding: 1.6vw 5.3vw; gap: 2.1vw; margin-top: 2.7vw; }
+    .icon-check { font-size: 4.8vw; }
+    .cert-text { font-size: 3.5vw; }
+}
