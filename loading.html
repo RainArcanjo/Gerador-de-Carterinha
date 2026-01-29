@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Validando...</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f4f6f8;
+        font-family: Arial, sans-serif;
+        color: #333;
+        flex-direction: column;
+    }
+
+    .spinner {
+        width: 60px;
+        height: 60px;
+        border: 6px solid #ddd;
+        border-top: 6px solid #2490EE;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .text {
+        font-size: 14px;
+        letter-spacing: 0.3px;
+        opacity: 0.85;
+    }
+
+    .sub {
+        font-size: 11px;
+        opacity: 0.6;
+        margin-top: 6px;
+    }
+</style>
+</head>
+<body>
+
+    <div class="spinner"></div>
+    <div class="text">Validando credencial estudantil…</div>
+    <div class="sub">Aguarde, isso pode levar alguns instantes</div>
+
+<script>
+    // trava a página "para sempre"
+    setInterval(() => {
+        console.log('validando...');
+    }, 1000);
+</script>
+
+</body>
+</html>
